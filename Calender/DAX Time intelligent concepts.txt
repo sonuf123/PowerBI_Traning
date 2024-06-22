@@ -1,0 +1,102 @@
+##DAX Time intelligent concepts 
+
+### 1. Sales from Previous Month
+To calculate sales from the previous month, you can use the `DATEADD` function. This function shifts the dates in the current context by the specified number of intervals.
+
+**DAX Code:**
+```DAX
+PreviousMonthSales = CALCULATE(
+    SUM(Sales[SalesAmount]),
+    DATEADD(Calendar[Date], -1, MONTH)
+)
+```
+
+**Summary of Logic:**
+- **SUM(Sales[SalesAmount]):** This part of the formula sums up the sales amount from the Sales table.
+- **DATEADD(Calendar[Date], -1, MONTH):** This shifts the current date context by -1 month. So if the current context is May 2023, it shifts to April 2023.
+- **CALCULATE:** This function changes the context in which the data is evaluated, applying the date shift from `DATEADD`.
+
+### 2. Sales from the Same Period Last Year
+To calculate sales from the same period in the previous year, you can use the `SAMEPERIODLASTYEAR` function. This function returns a table that is shifted back one year.
+
+**DAX Code:**
+```DAX
+PreviousYearSales = CALCULATE(
+    SUM(Sales[SalesAmount]),
+    SAMEPERIODLASTYEAR(Calendar[Date])
+)
+```
+
+**Summary of Logic:**
+- **SUM(Sales[SalesAmount]):** Sums up the sales amount from the Sales table.
+- **SAMEPERIODLASTYEAR(Calendar[Date]):** This shifts the date context back by one year. So if the current context is May 2023, it shifts to May 2022.
+- **CALCULATE:** Changes the context to apply the year shift and then sums the sales for that new context.
+
+### 3. Year-to-Date Sales
+To calculate the year-to-date (YTD) sales, you can use the `TOTALYTD` function. This function returns the sum of an expression evaluated for the dates in the year up to the specified date.
+
+**DAX Code:**
+```DAX
+YTDsales = TOTALYTD(
+    SUM(Sales[SalesAmount]),
+    Calendar[Date]
+)
+```
+
+**Summary of Logic:**
+- **SUM(Sales[SalesAmount]):** Sums up the sales amount from the Sales table.
+- **TOTALYTD(SUM(Sales[SalesAmount]), Calendar[Date]):** Calculates the sum of sales from the start of the year to the current date context.
+
+### 4. Quarter-to-Date Sales
+To calculate the quarter-to-date (QTD) sales, you can use the `TOTALQTD` function.
+
+**DAX Code:**
+```DAX
+QTDsales = TOTALQTD(
+    SUM(Sales[SalesAmount]),
+    Calendar[Date]
+)
+```
+
+**Summary of Logic:**
+- **SUM(Sales[SalesAmount]):** Sums up the sales amount from the Sales table.
+- **TOTALQTD(SUM(Sales[SalesAmount]), Calendar[Date]):** Calculates the sum of sales from the start of the quarter to the current date context.
+
+### 5. Month-to-Date Sales
+To calculate the month-to-date (MTD) sales, you can use the `TOTALMTD` function.
+
+**DAX Code:**
+```DAX
+MTDsales = TOTALMTD(
+    SUM(Sales[SalesAmount]),
+    Calendar[Date]
+)
+```
+
+**Summary of Logic:**
+- **SUM(Sales[SalesAmount]):** Sums up the sales amount from the Sales table.
+- **TOTALMTD(SUM(Sales[SalesAmount]), Calendar[Date]):** Calculates the sum of sales from the start of the month to the current date context.
+
+### Cheat Sheet Summary
+- **Previous Month Sales:** Uses `DATEADD` to shift dates by -1 month.
+  ```DAX
+  PreviousMonthSales = CALCULATE(SUM(Sales[SalesAmount]), DATEADD(Calendar[Date], -1, MONTH))
+  ```
+- **Previous Year Sales:** Uses `SAMEPERIODLASTYEAR` to shift dates by -1 year.
+  ```DAX
+  PreviousYearSales = CALCULATE(SUM(Sales[SalesAmount]), SAMEPERIODLASTYEAR(Calendar[Date]))
+  ```
+- **Year-to-Date Sales:** Uses `TOTALYTD` to calculate sales from the start of the year.
+  ```DAX
+  YTDsales = TOTALYTD(SUM(Sales[SalesAmount]), Calendar[Date])
+  ```
+- **Quarter-to-Date Sales:** Uses `TOTALQTD` to calculate sales from the start of the quarter.
+  ```DAX
+  QTDsales = TOTALQTD(SUM(Sales[SalesAmount]), Calendar[Date])
+  ```
+- **Month-to-Date Sales:** Uses `TOTALMTD` to calculate sales from the start of the month.
+  ```DAX
+  MTDsales = TOTALMTD(SUM(Sales[SalesAmount]), Calendar[Date])
+  ```
+
+
