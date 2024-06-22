@@ -1,7 +1,7 @@
 
 
 ## Matrix Table with Bars and Visuals 
-***Link *** :[Matrix Table with Bars and Visuals Report](https://app.powerbi.com/view?r=eyJrIjoiZDViYjc5YWEtMzEyZC00NWE1LTkwOTktZmIzODBiYjdmNjgyIiwidCI6IjZhMTgyNzllLTgzMzktNGFhYS1hZDliLTViYjdjMmU4ZDE2YiJ9 "Matrix Table with Bars and Visuals Report")
+**Link** :[Matrix Table with Bars and Visuals Report](https://app.powerbi.com/view?r=eyJrIjoiZDViYjc5YWEtMzEyZC00NWE1LTkwOTktZmIzODBiYjdmNjgyIiwidCI6IjZhMTgyNzllLTgzMzktNGFhYS1hZDliLTViYjdjMmU4ZDE2YiJ9 "Matrix Table with Bars and Visuals Report")
 
 This Power BI project includes visualizations designed to showcase various metrics using SVG elements.
 
